@@ -1,0 +1,6 @@
+{
+  "darkmon": [
+    {"id": 1, "ru": "Тенебуль", "en": "Shadebul", "original": "Bulbasaur", "types": ["Grass", "Dark"]},
+    {"id": 25, "ru": "Пиканочи", "en": "Pikanochi", "original": "Pikachu", "types": ["Electric", "Dark"]}
+  ]
+}
