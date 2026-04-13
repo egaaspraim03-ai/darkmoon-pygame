@@ -1,15 +1,15 @@
-darkmoon-pygame/
-├── main.py
-├── config.py
-├── assets/
-│   └── sprites/
-│       ├── player/
-│       ├── darkmon/
-│       └── tiles/
-├── data/
-│   ├── darkmon.json
-│   └── maps/
-├── core/
-│   ├── player.py
-│   └── camera.py
-└── README.md
+# NÉXUS • DARK MOON (Python + Pygame версия)
+
+Кроссовер аниме миров в стиле классического Pokémon.
+
+### Структура проекта
+- `main.py` — точка входа
+- `config.py` — все настройки
+- `core/` — ядро (игрок, камера и т.д.)
+- `data/` — данные (монстры, карты)
+- `assets/` — все изображения
+
+### Как запустить
+```bash
+pip install pygame
+python main.py
