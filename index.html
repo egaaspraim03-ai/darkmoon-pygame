@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NÉXUS • DARK MOON</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div class="game-container">
+    <div id="overworld-container" class="tab-content active"></div>
+    <div id="battle-container" class="tab-content"></div>
+  </div>
+
+  <!-- Виртуальное управление для телефона -->
+  <div class="virtual-controls">
+    <div class="dpad">
+      <button class="up" onclick="moveDirection('up')">↑</button>
+      <button class="left" onclick="moveDirection('left')">←</button>
+      <button class="down" onclick="moveDirection('down')">↓</button>
+      <button class="right" onclick="moveDirection('right')">→</button>
+    </div>
+    <div class="action-buttons">
+      <button class="a" onclick="actionA()">A</button>
+      <button class="b" onclick="actionB()">B</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/overworld.js"></script>
+  <script src="js/battle.js"></script>
+  <!-- Добавь остальные js файлы по мере надобности -->
+
+  <script>
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+    Telegram.WebApp.requestFullscreen();
+  </script>
+</body>
+</html>
