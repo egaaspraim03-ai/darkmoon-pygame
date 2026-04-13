@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
-# Создаём игрока и камеру
+# Создаём объекты
 player = Player()
 camera = Camera()
 
@@ -26,9 +26,12 @@ while running:
                 in_title_screen = False
                 print("→ Игра запущена! Переход в мир Darkmon...")
 
+    keys = pygame.key.get_pressed()
+
     if in_title_screen:
-        # Заставка
+        # Красивая заставка
         screen.fill(BACKGROUND_COLOR)
+        
         title = pygame.font.Font(None, 74).render("NÉXUS • DARK MOON", True, ACCENT_COLOR)
         subtitle = pygame.font.Font(None, 36).render("Параллельная реальность", True, TEXT_COLOR)
         start = pygame.font.Font(None, 36).render("Нажми ПРОБЕЛ чтобы войти", True, TEXT_COLOR)
@@ -37,10 +40,23 @@ while running:
         screen.blit(subtitle, subtitle.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 10)))
         screen.blit(start, start.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT - 80)))
     else:
+        # Игровой мир
         screen.fill((10, 15, 30))
-        # Здесь будет overworld позже
-        text = pygame.font.Font(None, 36).render("Мир Darkmon загружается...", True, TEXT_COLOR)
-        screen.blit(text, (SCREEN_WIDTH//2 - 140, SCREEN_HEIGHT//2))
+        
+        # Обновляем игрока
+        player.update(keys)
+        
+        # Обновляем камеру
+        camera.update(player)
+        
+        # Рисуем игрока с учётом камеры
+        draw_x = player.rect.x - camera.offset_x
+        draw_y = player.rect.y - camera.offset_y
+        screen.blit(player.image, (draw_x, draw_y))
+
+        # Временный текст (пока нет карты)
+        text = pygame.font.Font(None, 36).render("Мир Darkmon (карта скоро появится)", True, (180, 180, 255))
+        screen.blit(text, (50, 50))
 
     pygame.display.flip()
     clock.tick(FPS)
